@@ -1,0 +1,22 @@
+/** wxss **/
+
+.bf {
+  float: left;
+  width: 25%;
+}
+
+.zt {
+  float: left;
+  width: 25%;
+}
+
+.last {
+  float: left;
+  width: 25%;
+}
+.av{
+  width:100px
+}
+.audio_user{
+   width:100px
+}

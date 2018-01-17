@@ -1,14 +1,47 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/index/error",
     "pages/main/main",
     "pages/logs/logs"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-"navigationBarTitleText": "你的生活，随你做主",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarTitleText": "Do not lose hope to life",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#f9f027",
+    "borderStyle": "white",
+    "backgroundColor": "#292929",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/Category.png",
+        "selectedIconPath":"images/Category-red.png",
+        "text": "网站收藏"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/dmt.png",
+        "selectedIconPath": "images/dmt-red.png",
+        "text": "音乐/视频"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/attachment.png",
+        "selectedIconPath": "images/attachment-red.png",
+        "text": "文件上传"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/set.png",
+        "selectedIconPath": "images/set-red.png",
+        "text": "设置"
+      }
+    ]
+  },
+  "debug": true
 }

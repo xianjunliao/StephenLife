@@ -1,30 +1,22 @@
 var msgs = '';
-var value=null;
 Page({
   data: {
-    focus: true,
-    vlaue: ''
+    focus: true
   },
-  onLoad:function(){
+  onLoad: function () {
 
   },
-  inputCode: function (e) {
-  value = e.detail.value
-  this.setData({
-    msg: ''
-  })
-
-  },
-  inputBut:function(){
-    var that=this
-    if(value==null||value==''){
+  inputBut: function (e) {
+    var that = this
+    var value = e.detail.value
+    if (value == null || value == '') {
       that.setData({
-        msg:'can not null'
+        msg: '输入的编码不能为空'
       })
-      return ;
+      return;
     }
     wx.request({
-      url: 'http://www.liaoxianjun.com/enterCode',
+      url: 'http://www.liaoxianjun.com/add',
       data: {
         code: value
       },
@@ -33,19 +25,31 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
-        if (res.data.userCode != null) {
+        if (res.data.code == "200") {
           wx.navigateTo({
-            url: '../main/main?userCode=' + res.data.userCode,
+            url: '../main/main',
             success: function (res) {
               console.log(res);
             },
             fail: function (res) { },
             complete: function (res) { },
           })
-        } else {
-          that.setData({
-            msg: 'not exist'
+        } 
+        if (res.data.code == "202") {
+          wx.navigateTo({
+            url: '../index/error',
+            success: function (res) {
+              console.log(res);
+            },
+            fail: function (res) { },
+            complete: function (res) { },
           })
+        } 
+        else {
+          that.setData({
+            msg: '输入的编码不存在'
+          })
+          value="";
         }
       }, fail: function (res) {
 

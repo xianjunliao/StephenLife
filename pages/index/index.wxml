@@ -1,7 +1,6 @@
 <!--index.wxml-->
 <view class="container" >
-<text>Your code {{msg}}</text>
-  <input loading='true' class="yourCode" value='{{vlaue}}' bindinput='inputCode'  placeholder="Please enter your code......" auto-focus/>
-  <button bindtap='inputBut' class='but'>GO</button>
+<text>{{msgs}}</text>
+  <input loading='true' class="yourCode" value='{{vlaue}}' bindconfirm='inputBut' type='password' placeholder="Please enter your code..." auto-focus confirm-type='go' />
 </view>
-<view class='container1'></view>
+

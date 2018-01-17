@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/index/error",
-    "pages/main/main",
-    "pages/logs/logs"
+    "pages/website/index",
+    "pages/multi-media/index",
+    "pages/setting/index",
+    "pages/file-upload/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,25 +18,25 @@
     "backgroundColor": "#292929",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/website/index",
         "iconPath": "images/Category.png",
-        "selectedIconPath":"images/Category-red.png",
+        "selectedIconPath": "images/Category-red.png",
         "text": "网站收藏"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/multi-media/index",
         "iconPath": "images/dmt.png",
         "selectedIconPath": "images/dmt-red.png",
         "text": "音乐/视频"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/file-upload/index",
         "iconPath": "images/attachment.png",
         "selectedIconPath": "images/attachment-red.png",
         "text": "文件上传"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/setting/index",
         "iconPath": "images/set.png",
         "selectedIconPath": "images/set-red.png",
         "text": "设置"

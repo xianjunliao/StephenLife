@@ -1,4 +1,4 @@
-// pages/images.js
+// pages/multi-media/index.js
 Page({
 
   /**

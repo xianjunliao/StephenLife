@@ -1,4 +1,4 @@
-// pages/index/error.js
+// pages/file-upload/index.js
 Page({
 
   /**

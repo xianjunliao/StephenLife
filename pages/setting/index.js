@@ -1,66 +1,55 @@
-// pages/setting/index.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    var that = this
+    wx.getUserInfo({
+      success: function (res) {
+        var signature = res.signature;
+        getUser(signature, that);
+      }
+    })
   }
 })
+
+function getUser(signature, that) {
+  wx.request({
+    url: 'https://www.liaoxianjun.com/wx/user/getUserInfo',
+    data: {
+      signature: signature
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    }, success: function (res) {
+      that.setData({
+        headImgUrl: res.data.data.avatarurl,
+        nickName: res.data.data.nickname
+      })
+      getAddress(that);
+    }
+  })
+}
+function getAddress(that){
+  wx.getLocation({
+    type: 'wgs84',
+    success: function (res) {
+      var location = res;
+      console.log(location);
+      wx.request({
+        url: 'https://www.liaoxianjun.com/wx/user/getAddress',
+        data: {
+          latitude: location.latitude,
+          longitude: location.longitude
+        }, header: {
+          'content-type': 'application/json' // 默认值
+        }, success: function (res) {
+          console.log(res);
+          that.setData({
+            address: res.data.data
+          })
+        }
+      })
+    }
+  })
+
+}

@@ -1,17 +1,18 @@
 var msgs = '';
 var signature;
 var wxUserInfo = {};
+var scene;
+var appInstance = getApp();
 Page({
   data: {
 
   },
-  onLoad: function () {
-    var that = this;
-    
-
+ onLoad: function (options) {
+   console.log("[onLoad] 场景值:", scene)
     wx.getUserInfo({
       success: function (res) {
-        var user=res;
+        var user = res;
+        user['scene']=scene;
         wx.getLocation({
           type: 'wgs84',
           success: function (res) {
@@ -21,11 +22,19 @@ Page({
         })
       }
     })
+  },
+})
+App({
+  onLaunch: function (options) {
+   scene=options.scene;
+  },
+  onShow: function (options) {
+ 
   }
 })
 function getUser(user,location) {
   wx.request({
-    url: 'http://www.liaoxianjun.com/wx/user/getUserInfo',
+    url: 'https://www.liaoxianjun.com/wx/user/getUserInfo',
     data: {
       signature: user.signature
     },
@@ -55,23 +64,24 @@ function getUser(user,location) {
 function saveLogin(user, system, location) {
   var userInfo = user.userInfo;
   wx.request({
-    url: 'http://www.liaoxianjun.com/wx/login/save',
+    url: 'https://www.liaoxianjun.com/wx/login/save',
     data: {
       signature: user.signature,
       nickname: userInfo.nickName,
       avatarurl: userInfo.avatarUrl,
-      loginaddress: location.latitude +','+location.longitude,
+      loginaddress: location.longitude + ',' + location.latitude,
       brand: system.brand,
       model: system.model,
       version: system.version,
       language: system.language,
-      system: system.system
+      system: system.system,
+      scene: user.scene
     },
     header: {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data)
+
     }, fail: function (res) {
 
     }
@@ -80,7 +90,7 @@ function saveLogin(user, system, location) {
 function saveUser(res) {
   var userInfo = res.userInfo;
   wx.request({
-    url: 'http://www.liaoxianjun.com/wx/user/save',
+    url: 'https://www.liaoxianjun.com/wx/user/save',
     data: {
       signature: res.signature,
       nickname: userInfo.nickName,
@@ -94,7 +104,6 @@ function saveUser(res) {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      console.log(res.data)
       if (res.data.code == "200") {
 
       }

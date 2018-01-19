@@ -1,3 +1,19 @@
-<view class="container" >
-<text>设置功能还在开发中....</text>
+<view class="page">
+
+  <view class="wx section__ctn">
+    <image class='head_img' mode="scaleToFill" src="{{headImgUrl}}"></image>
+    <view class='wx_user head_left'>
+      <text>{{nickName}}\n</text>
+      <text>{{address}}</text>
+    </view>
+  </view>
+  <view class="wx li">
+    <image class='wx icon' src='/images/qianbao.png'></image>
+    <label class='label_qianbao'>钱包</label>
+  </view>
+  <view class='wx li'></view>
+  <view class='wx li'></view>
+  <view class='wx li'></view>
+  <view class='wx li'></view>
+  <view class='wx li'></view>
 </view>

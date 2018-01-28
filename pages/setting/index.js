@@ -9,7 +9,22 @@ Page({
         getUser(signature, that);
       }
     })
-  }
+  }, onReachBottom: function () {
+    var that = this
+    wx.getUserInfo({
+      success: function (res) {
+        var signature = res.signature;
+        getUser(signature, that);
+      }
+    })
+  }, onPullDownRefresh: function () {
+    wx.getUserInfo({
+      success: function (res) {
+        var signature = res.signature;
+        getUser(signature, that);
+      }
+    })
+  },
 })
 
 function getUser(signature, that) {
